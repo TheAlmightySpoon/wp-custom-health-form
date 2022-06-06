@@ -33,6 +33,7 @@ In order to update the pdf links you'll need to follow the steps oulined below:
      <td>dist\css\app.97c7393e.css</td><td>2.20 KiB</td><td>0.70 KiB</td>
     </tr>
    </tbody>
+   </table>
   </code>
   <code>Images and other types of assets omitted.</code><br />
   <code>Build at: 2022-06-06T08:30:31.522Z - Hash: 93a97f77ae1a66f3 - Time: 30594ms</code></li>
