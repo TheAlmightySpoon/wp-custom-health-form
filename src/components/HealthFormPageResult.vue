@@ -72,6 +72,19 @@
         </v-col>
       </v-row>
 
+      <v-row justify="center">
+        <v-col cols="10" md="6">
+          <ul>
+            <li 
+              v-for='link in links'
+              :key='link'  
+            >
+              <a v-bind:href="link">{{ link }}</a>
+            </li>
+          </ul>
+        </v-col>
+      </v-row>
+
       <v-row justify="end" class="d-print-none">
         <v-col cols="12" md="3">
           <v-btn block plain v-on:click="emitToParent"><v-img contain :src="src" height="40" width="40" max-width="40"></v-img> Start Again</v-btn>

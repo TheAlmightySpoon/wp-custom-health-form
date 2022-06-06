@@ -20,11 +20,12 @@
                   solo
                   v-model="formData.myHeight.meters"
                   label="meters"
-                  :rules="heightRules"
+                  :rules="heightRulesMetric"
                   required
                   type="number"
-                  min="0"
-                  step="1"
+                  min="1"
+                  max="3"
+                  step="0.1"
                   suffix="m"
                 ></v-text-field>
               </v-col>
@@ -37,6 +38,7 @@
                   required
                   type="number"
                   min="0"
+                  max="3"
                   step="1"
                   suffix="m"
                   v-if="formData.heightUnits=='metric'"
@@ -48,7 +50,8 @@
                   :rules="heightRules"
                   required
                   type="number"
-                  min="0"
+                  min="3"
+                  max="9"
                   step="1"
                   suffix="ft"
                   v-else
@@ -71,7 +74,7 @@
                   solo
                   v-model="formData.myHeight.inches"
                   label="inches"
-                  :rules="heightRules"
+                  :rules="heightRulesInches"
                   required
                   type="number"
                   min="0"
@@ -97,10 +100,11 @@
                   solo
                   v-model="formData.myWeight.previous.kilograms"
                   label="kilograms"
-                  :rules="weightRules"
+                  :rules="weightRulesMetric"
                   required
                   type="number"
-                  min="0"
+                  min="20"
+                  max="650"
                   suffix="kg"
                 ></v-text-field>
               </v-col>
@@ -144,7 +148,7 @@
                   solo
                   v-model="formData.myWeight.previous.pounds"
                   label="pounds"
-                  :rules="weightRules"
+                  :rules="weightRulesLbs"
                   required
                   type="number"
                   min="0"
@@ -169,10 +173,11 @@
                   solo
                   v-model="formData.myWeight.current.kilograms"
                   label="kilograms"
-                  :rules="weightRules"
+                  :rules="weightRulesMetric"
                   required
                   type="number"
-                  min="0"
+                  min="25"
+                  max="650"
                   suffix="kg"
                   v-if="formData.weightUnits=='metric'"
                 ></v-text-field>
@@ -217,7 +222,7 @@
                   solo
                   v-model="formData.myWeight.current.pounds"
                   label="pounds"
-                  :rules="weightRules"
+                  :rules="weightRulesLbs"
                   required
                   type="number"
                   min="0"
@@ -382,10 +387,36 @@ import MenuIcon from 'vue-material-design-icons/InformationOutline.vue';
       heightRules: [
         v => !!v || 'Height is required',
         v => v > -1 || 'Height cannot be negative',
+        v => v < 9.1 || 'Height cannot be more than 9ft',
+        v => v > 2.9 || 'Height cannot be less than 3ft',
+      ],
+      heightRulesInches: [
+        v => !!v || 'Height is required',
+        v => v > -1 || 'Height cannot be negative',
+        v => v < 11.1 || 'Height cannot be more than 11in',
+      ],
+      heightRulesMetric: [
+        v => !!v || 'Height is required',
+        v => v > -1 || 'Height cannot be negative',
+        v => v < 3.1 || 'Height cannot be more than 3m',
+        v => v > 0.9 || 'Height cannot be less than 1m',
       ],
       weightRules: [
         v => !!v || 'Weight is required',
         v => v > -1 || 'Weight cannot be negative',
+        v => v < 100.1 || 'Weight cannot be more than 100st',
+        v => v > 2.9 || 'Weight cannot be less than 3st',
+      ],
+      weightRulesMetric: [
+        v => !!v || 'Weight is required',
+        v => v > -1 || 'Weight cannot be negative',
+        v => v < 650.1 || 'Weight cannot be more than 650kg',
+        v => v > 19.9 || 'Weight cannot be less than 20kg',
+      ],
+      weightRulesLbs: [
+        v => !!v || 'Weight is required',
+        v => v > -1 || 'Weight cannot be negative',
+        v => v < 14 || 'Weight cannot be more than 13lbs',
       ],
       email: '',
       emailRules: [

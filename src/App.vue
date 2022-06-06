@@ -145,18 +145,18 @@ export default {
       'Indigestion & heartburn'
     ],
     feelsLinksAll : [
-      ['https://extranet.hampshirehospitals.nhs.uk/download_file/view/4036/589', 'https://cdn.macmillan.org.uk/dfsmedia/1a6f23537f7f4519bb0cf14c45b2a629/3833-source/mac13613-e04-eating-problems-lowres-20200929-lk?_ga=2.24520889.2080067083.1637330359-355950048.1617006683'],
-      ['https://extranet.hampshirehospitals.nhs.uk/download_file/view/10170/589'],
-      ['https://extranet.hampshirehospitals.nhs.uk/download_file/view/10170/589', 'https://cdn.macmillan.org.uk/dfsmedia/1a6f23537f7f4519bb0cf14c45b2a629/3833-source/mac13613-e04-eating-problems-lowres-20200929-lk?_ga=2.24520889.2080067083.1637330359-355950048.1617006683'],
-      ['https://cdn.macmillan.org.uk/dfsmedia/1a6f23537f7f4519bb0cf14c45b2a629/3833-source/mac13613-e04-eating-problems-lowres-20200929-lk?_ga=2.24520889.2080067083.1637330359-355950048.1617006683'],
-      ['https://www.royalmarsden.nhs.uk/your-care/living-and-beyond-cancer/eating-well/problems-may-affect-your-eating/how-manage', 'https://cdn.macmillan.org.uk/dfsmedia/1a6f23537f7f4519bb0cf14c45b2a629/3833-source/mac13613-e04-eating-problems-lowres-20200929-lk?_ga=2.24520889.2080067083.1637330359-355950048.1617006683'],
-      ['https://cdn.macmillan.org.uk/dfsmedia/1a6f23537f7f4519bb0cf14c45b2a629/3833-source/mac13613-e04-eating-problems-lowres-20200929-lk?_ga=2.24520889.2080067083.1637330359-355950048.1617006683'],
-      ['https://cdn.macmillan.org.uk/dfsmedia/1a6f23537f7f4519bb0cf14c45b2a629/3833-source/mac13613-e04-eating-problems-lowres-20200929-lk?_ga=2.24520889.2080067083.1637330359-355950048.1617006683'],
-      ['https://cdn.macmillan.org.uk/dfsmedia/1a6f23537f7f4519bb0cf14c45b2a629/3833-source/mac13613-e04-eating-problems-lowres-20200929-lk?_ga=2.24520889.2080067083.1637330359-355950048.1617006683'],
-      ['https://extranet.hampshirehospitals.nhs.uk/download_file/view/1646/589', 'https://cdn.macmillan.org.uk/dfsmedia/1a6f23537f7f4519bb0cf14c45b2a629/3833-source/mac13613-e04-eating-problems-lowres-20200929-lk?_ga=2.24520889.2080067083.1637330359-355950048.1617006683'],
-      [],
-      ['https://extranet.hampshirehospitals.nhs.uk/download_file/view/4036/589', 'https://cdn.macmillan.org.uk/dfsmedia/1a6f23537f7f4519bb0cf14c45b2a629/3833-source/mac13613-e04-eating-problems-lowres-20200929-lk?_ga=2.24520889.2080067083.1637330359-355950048.1617006683'],
-      []
+      ['https://wessexcanceralliance.nhs.uk/wp-content/uploads/2022/05/FoodFirst-Poor-appetite.pdf'],
+      ['https://wessexcanceralliance.nhs.uk/wp-content/uploads/2022/05/Coping-with-nausea-and-vomiting.pdf'],
+      ['https://wessexcanceralliance.nhs.uk/wp-content/uploads/2022/05/Coping-with-nausea-and-vomiting.pdf'],
+      ['https://wessexcanceralliance.nhs.uk/wp-content/uploads/2022/05/Coping-with-diarrhoea.pdf'],
+      ['https://wessexcanceralliance.nhs.uk/wp-content/uploads/2022/05/Coping-with-constipation.pdf'],
+      ['https://wessexcanceralliance.nhs.uk/wp-content/uploads/2022/05/Coping-with-a-dry-mouth.pdf'],
+      ['https://wessexcanceralliance.nhs.uk/wp-content/uploads/2022/05/Coping-with-a-sore-mouth-or-throat.pdf'],
+      ['https://wessexcanceralliance.nhs.uk/wp-content/uploads/2022/05/Coping-with-being-too-tired-to-cook.pdf'],
+      ['https://wessexcanceralliance.nhs.uk/wp-content/uploads/2022/05/Coping-with-taste-changes.pdf'],
+      ['https://wessexcanceralliance.nhs.uk/wp-content/uploads/2022/05/Coping-with-wind.pdf'],
+      ['https://wessexcanceralliance.nhs.uk/wp-content/uploads/2022/05/Coping-with-feeling-full-quickly.pdf'],
+      ['https://wessexcanceralliance.nhs.uk/wp-content/uploads/2022/05/Coping-with-indigestion-and-heartburn.pdf']
     ],
     fellsLinksActive : [
 
