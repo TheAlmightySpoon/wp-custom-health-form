@@ -12,14 +12,23 @@ In order to update the pdf links you'll need to follow the steps oulined below:
  <li>On line 147 you will see a JSON object with the corresponding links to the symptoms defined in the object on line 133.  This is where you add/update the links to the relevant PDFs</li>
  <li>Once you've made the required changes, open a terminal window, navigate to the root directory of the wp-custom-health-form repository on your local machine then run <code>npm run build</code></li>
  <li>Once the build preocess has finished you should see an output similar to this: 
-  <code>File                                   Size                                                         Gzipped</code>
-
-  <code>dist\js\chunk-vendors.da9b823c.js      231.07 KiB                                                   73.45 KiB</code>
-  <code>dist\js\app.296d13d6.js                29.22 KiB                                                    7.32 KiB</code>
-  <code>dist\css\chunk-vendors.0467b896.css    365.45 KiB                                                   43.76 KiB</code>
-  <code>dist\css\app.97c7393e.css              2.20 KiB                                                     0.70 KiB</code>
-
-  <code>Images and other types of assets omitted.</code>
+  <code>
+  <table>
+   <thead>
+    <tr>
+     <th>File</th><th>Size</th><th>Gzipped</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>dist\js\chunk-vendors.da9b823c.js</td><td>231.07 KiB</td><td>73.45 KiB</td>
+     <td>dist\js\app.296d13d6.js</td><td>29.22 KiB</td><td>7.32 KiB</td>
+     <td>dist\css\chunk-vendors.0467b896.css</td><td>365.45 KiB</td><td>43.76 KiB</td>
+     <td>dist\css\app.97c7393e.css</td><td>2.20 KiB</td><td>0.70 KiB</td>
+     </tr>
+   </tbody>
+  </code>
+  <code>Images and other types of assets omitted.</code><br />
   <code>Build at: 2022-06-06T08:30:31.522Z - Hash: 93a97f77ae1a66f3 - Time: 30594ms</code></li>
  <li>Locate the wp-vue-weight-form.php file in your local copy of the wp-custom-health-form repository and update line 9 <code>wp_register_script('wpvue_vuejs', plugin_dir_url( __FILE__ ).'dist/js/app.296d13d6.js', true);</code> to match the output of the build process <code>dist\js\app.296d13d6.js</code></li>
  <li>Once the above steps have been completed, all that's left is to open an FTP client of your choice, navigate to <code>/wessexcanceralliance.nhs.uk/html/wp-content/plugins/wp-vue-weight-form</code> then copy wp-vue-weight-form.php and the /dist folder from your local machine.</li>
