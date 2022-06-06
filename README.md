@@ -22,10 +22,16 @@ In order to update the pdf links you'll need to follow the steps oulined below:
    <tbody>
     <tr>
      <td>dist\js\chunk-vendors.da9b823c.js</td><td>231.07 KiB</td><td>73.45 KiB</td>
+    </tr>
+    <tr>
      <td>dist\js\app.296d13d6.js</td><td>29.22 KiB</td><td>7.32 KiB</td>
+    </tr>
+    <tr>
      <td>dist\css\chunk-vendors.0467b896.css</td><td>365.45 KiB</td><td>43.76 KiB</td>
+    </tr>
+    <tr>
      <td>dist\css\app.97c7393e.css</td><td>2.20 KiB</td><td>0.70 KiB</td>
-     </tr>
+    </tr>
    </tbody>
   </code>
   <code>Images and other types of assets omitted.</code><br />
