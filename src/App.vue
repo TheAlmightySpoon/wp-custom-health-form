@@ -25,6 +25,7 @@
                 :MUST="MUST" 
                 :intentional="formData.one.intentional" 
                 :links="fellsLinksActive" 
+                :mustLinks="mustLinks"
               ></component>
             </v-card>
           </v-col>
@@ -100,6 +101,7 @@ export default {
       symptom : 0,
       total : 0
     },
+    mustLinks: [],
     pageOne : {
       headingOne : "First let’s think about your height and weight",
       subHeadingOne : "Weight history",
@@ -160,6 +162,50 @@ export default {
     ],
     fellsLinksActive : [
 
+    ],
+    mustLinksZero : [
+      { 
+        link : 'https://cdn.macmillan.org.uk/dfsmedia/1a6f23537f7f4519bb0cf14c45b2a629/2937-source/mac13612-e04-healthyeating-lowres-20200929-lk?_ga=2.65882157.2080067083.1637330359-355950048.1617006683',
+        name : 'Healthy eating and cancer (macmillan.org.uk)'
+      },
+      {
+        link : 'https://www.royalmarsden.nhs.uk/your-care/living-and-beyond-cancer/eating-well',
+        name : 'Eating well with cancer (Royal Marsden Hospital)'
+      },
+      {
+        link : 'https://www.bda.uk.com/uploads/assets/1a9d5f92-aaab-4431-992e70a2abacaffd/BDA-OncologySG-A4-Cancer-Diets.pdf',
+        name : 'Cancer Diets: Myths and More (British Dietetic Association)'
+      }
+    ],
+    mustLinksOne : [
+      {
+        link : 'https://wessexcanceralliance.nhs.uk/wp-content/uploads/2022/05/Eating-well-to-prevent-weight-loss.pdf',
+        name : 'Eating well to prevent weight loss'
+      },
+      {
+        link : 'https://wessexcanceralliance.nhs.uk/wp-content/uploads/2022/05/FoodFirst-Poor-appetite.pdf',
+        name : 'Food first - Poor appetite'
+      },
+      {
+        link : 'https://wessexcanceralliance.nhs.uk/wp-content/uploads/2022/05/FoodFirst-Nourishing-snacks.pdf',
+        name : 'Food first - nourishing snacks'
+      },
+      {
+        link : 'https://wessexcanceralliance.nhs.uk/wp-content/uploads/2022/05/FoodFirst-Nourishing-Drinks.pdf',
+        name : 'Food first - nourishing drinks'
+      },
+      {
+        link : 'https://wessexcanceralliance.nhs.uk/wp-content/uploads/2022/05/FoodFirst-Food-fortification.pdf',
+        name : 'Food first - food fortification'
+      },
+      {
+        link : 'https://www.macmillan.org.uk/cancer-information-and-support/impacts-of-cancer/healthy-eating-and-cancer/common-questions-about-diet-and-cancer',
+        name : 'Common questions about diet and cancer (macmillan.org.uk)'
+      },
+      {
+        link : 'https://www.bda.uk.com/uploads/assets/1a9d5f92-aaab-4431-992e70a2abacaffd/BDA-OncologySG-A4-Cancer-Diets.pdf',
+        name : 'Cancer Diets – myths and more (bda.uk.com)'
+      }
     ]
   }),
   methods: {
@@ -194,10 +240,33 @@ export default {
       // acute disease effect
       this.ADE = value.noIntake
       var totalScore = Math.abs(BMIscore) + Math.abs(value.noIntake) + UWL
-      if(totalScore == 1) {
+      if(totalScore == 0) {
+        // add to feels
+        //this.mustLinks = this.mustLinksZero
+        Object.values(this.mustLinksZero).forEach(link=>{
+          // prevent duplication
+          if(this.mustLinks.indexOf(link)==-1){
+            this.mustLinks.push(link)
+          }
+        })
+      }else if(totalScore == 1) {
         this.MUST = 'medium'
+        //this.mustLinks = this.mustLinksOne
+        Object.values(this.mustLinksOne).forEach(link=>{
+          // prevent duplication
+          if(this.mustLinks.indexOf(link)==-1){
+            this.mustLinks.push(link)
+          }
+        })
       }else if(totalScore > 1) {
         this.MUST = 'high'
+        //this.mustLinks = this.mustLinksOne
+        Object.values(this.mustLinksOne).forEach(link=>{
+          // prevent duplication
+          if(this.mustLinks.indexOf(link)==-1){
+            this.mustLinks.push(link)
+          }
+        })
       }
       this.userPosition = 2
     },
@@ -265,6 +334,8 @@ export default {
           }else if (value == 3) {
             this.currentComponent = HealthFormPageResult
           }else if (value == 0) {
+            this.fellsLinksActive.splice(0)
+            this.mustLinks.splice(0)
             this.currentComponent = HealthFormPageLanding
           }
         }
@@ -391,5 +462,9 @@ export default {
     line-height: inherit;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+  svg{
+    fill: #fff;
+    stroke: #fff;
   }
 </style>

@@ -1,7 +1,7 @@
 <template>
     <v-container fill-height id="printMe">
-      <v-btn fab top right absolute dark class="print-icon background-purple d-print-none" elevation="0" @click="print" v-if="$vuetify.breakpoint.smAndDown"><v-icon dark>mdi-printer</v-icon></v-btn>    
-      <v-btn fab top right absolute dark class="email-icon btn-blue d-print-none" elevation="0" @click="dialog=true" v-if="$vuetify.breakpoint.smAndDown"><v-icon dark>mdi-email</v-icon></v-btn>
+      <v-btn fab top right absolute dark class="print-icon background-purple d-print-none" elevation="0" @click="print" v-if="$vuetify.breakpoint.smAndDown"><v-img contain :src="printSrc" height="40" width="40" max-width="40"></v-img></v-btn>    
+      <v-btn fab top right absolute dark class="email-icon btn-blue d-print-none" elevation="0" @click="dialog=true" v-if="$vuetify.breakpoint.smAndDown"><v-img contain :src="emailSrc" height="40" width="40" max-width="40"></v-img></v-btn>
       <v-row justify="center">
         <v-col cols="10">
           <h2 class="text-center">These are your survey results</h2>
@@ -72,6 +72,20 @@
         </v-col>
       </v-row>
 
+       <v-row justify="center">
+        <v-col cols="12">
+          <v-alert
+            v-model="alert"
+            color="red"
+            type="warning"
+            block
+            class="text-center"
+            prominent
+            transition="scale-transition"
+          >Please tell your Cancer Specialist Nurse about this problem</v-alert>
+        </v-col>
+      </v-row>
+
       <v-row justify="center">
         <v-col cols="10" md="6">
           <ul>
@@ -79,9 +93,21 @@
               v-for='link in links'
               :key='link'  
             >
-              <a v-bind:href="link">{{ link }}</a>
+              <a v-bind:href="link" target="_blank">{{ link.substring(link.lastIndexOf('/')+1) }}</a>
+            </li>
+            <li 
+              v-for='(must, idz) in mustLinks'
+              :key='idz'  
+            >
+              <a v-bind:href="must.link" target="_blank">{{ must.name }}</a>
             </li>
           </ul>
+        </v-col>
+      </v-row>
+
+      <v-row justify="center">
+        <v-col cols="10" md="6">
+          <p>If you require further advice or have any concerns please speak to your cancer nurse specialist</p>
         </v-col>
       </v-row>
 
@@ -136,24 +162,33 @@
 
 <script>
   export default {
-    props: [ 'pageResultHeadings', 'score', 'BMI', 'UWL', 'MUST', 'links'],
+    props: [ 'pageResultHeadings', 'score', 'BMI', 'UWL', 'MUST', 'links', 'mustLinks'],
     data: () => ({
       api : './../wp-content/plugins/wp-vue-weight-form/wp-vue-email.php',
       row1 : [],
       src: require('./../assets/chevBack.png'),
+      emailSrc: require('./../assets/mail_FILL0_wght400_GRAD0_opsz48.svg'),
+      printSrc: require('./../assets/print_FILL0_wght400_GRAD0_opsz48.svg'),
       dialog: false,
       valid: true,
+      alert: false,
       email: '',
       emailRules: [
         v => !!v || 'E-mail is required',
         v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
       ],
     }),
+    created: function () {
+        console.log(this.score.symptom);
+        if(this.score.symptom > 0) {
+          this.alert = true
+        }
+    },
     methods : {
       submitForm () {
         if(this.$refs.form.validate()) {
           // send email
-          this.sendMail()
+          this.sendMail(this.mustLinks)
           this.dialog = false
         }
       },
@@ -174,7 +209,7 @@
       emitToParent () {
         this.$emit('formResult', this.valid)
       },
-      sendMail () {
+      sendMail (mustLinks) {
         this.axios
         .post(
             this.api,
@@ -183,7 +218,9 @@
               bmi : Math.abs(this.BMI).toFixed(2),
               uwl : this.UWL,
               must : this.MUST,
-              email : this.email
+              email : this.email,
+              links : this.links,
+              mustLinks : mustLinks
             }
         )
         .then(res => {

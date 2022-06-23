@@ -243,7 +243,7 @@
               v-if="showWLI"
             >
               <v-col cols="12" md="4">
-                Was this weight loss intentional?
+                Did you lose this weight on purpose?
               </v-col>
               <v-col cols="12" md="4">
                 <v-radio-group

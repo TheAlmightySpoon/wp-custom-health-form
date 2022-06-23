@@ -24,11 +24,28 @@ $message .= '<h4 class="text-center padded">Your unplanned weight loss is <b>'.$
 $message .= '</td></tr><tr style="background-color: #f5f7f7;"><td>';
 $message .= '<h4 class="text-center padded">This suggests a <b>'.$data->must.'</b> risk of being malnourished</h4>';
 $message .= '</td></tr>';
+// loop links
+if(is_array($data->links)) {
+    $message .= "<tr><td><ul>";
+    foreach($data->links as $link) {
+        $message .= "<li><a href='".$link."'>".substr($link, strrpos($link, "/")+1)."</a></li>";
+    }
+    $message .= "</ul></td></tr>";
+}
+// loop mustLinks
+if(is_array($data->mustLinks)) {
+    $message .= "<tr><td><ul>";
+    foreach($data->mustLinks as $link) {
+        $message .= "<li><a href='".$link->link."'>".$link->name."</a></li>";
+    }
+    $message .= "</ul></td></tr>";
+}
+$message .= "<tr><td>If you require further advice or have any concerns please speak to your cancer nurse specialist</td></tr>";
 $message .= '<tr><td bgcolor="#00A8C6" style="font-size: 0; line-height: 0; padding: 0 10px 0 10px;" height="140" align="center" class="responsive-image">
     <img src="https://wessexcanceralliance.nhs.uk/img/WCA_Email.jpg" alt="" /></td></tr>';
 $message .= '</table>';
 
-$to_email = 'thealmightyspoon@hotmail.com,'.$data->email;
+$to_email = $data->email;
 $subject = 'Personalised dietary advice';
 $headers[] = 'MIME-Version: 1.0';
 $headers[] = 'Content-type: text/html; charset=UTF-8';
